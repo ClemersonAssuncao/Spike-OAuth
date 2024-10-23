@@ -1,0 +1,30 @@
+{
+  "name": "jwt-app",
+  "version": "1.0.0",
+  "description": "Tenho q escrever algo depois...",
+  "scripts": {
+    "build": "tsc",
+    "start:jwt": "ts-node src/jwt_server/app.ts",
+    "start:tester": "ts-node src/token_tester/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ClemersonAssuncao",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^3.3.2",
+    "node-fetch-commonjs": "^3.3.2",
+    "redis": "^4.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/node": "^22.7.5"
+  }
+}

@@ -1,0 +1,34 @@
+<!-- parent.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Janela Pai</title>
+</head>
+<body>
+    <h1>Janela Pai</h1>
+    <iframe id="loginFrame" src="http://localhost:3001/api/login" style="width: 100%; height: 400px;"></iframe>
+    <div>
+        <h2>Token:</h2>
+        <div style="border: 1px solid #CCC; width: 100%; display: block; word-wrap: break-word;" id="token-id"></div>
+    </div>
+  <script>
+    window.addEventListener('message', function(event) {
+      if (event.origin !== 'http://localhost:3001') {
+        console.warn('Origem não confiável:', event.origin);
+        return;
+      }
+
+      const { token, status } = event.data;
+
+      if (status === 'success' && token) {
+        console.log('Token recebido:', token);
+        localStorage.setItem('token', token);
+        document.getElementById('token-id').textContent = token;
+      } else {
+        console.error('Erro ao receber o token');
+      }
+    }, false);
+  </script>
+</body>
+</html>

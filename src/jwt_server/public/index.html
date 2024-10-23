@@ -1,0 +1,53 @@
+<!-- views/index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Entidade Certificadora</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <label for="username">Nome de usuário:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    <div id="error-message" style="color: red;"></div>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('error-message');
+      errorMessage.textContent = ''; // Limpa a mensagem de erro
+
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const data = await response.text();
+        
+        if (response.ok) {
+          document.write(data);
+        } else {
+          // O login falhou; exibir mensagem de erro
+          errorMessage.textContent = data;
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    });
+  </script>
+</body>
+</html>
