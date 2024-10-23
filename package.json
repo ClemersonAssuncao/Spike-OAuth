@@ -4,7 +4,7 @@
   "description": "Tenho q escrever algo depois...",
   "scripts": {
     "build": "tsc",
-    "start:jwt": "ts-node src/jwt_server/app.ts",
+    "start:oauth": "ts-node src/jwt_server/app.ts",
     "start:tester": "ts-node src/token_tester/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
